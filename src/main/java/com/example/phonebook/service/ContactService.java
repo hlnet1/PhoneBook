@@ -11,10 +11,6 @@ import java.util.Optional;
 public interface ContactService {
     List<ContactDTO> getAllContacts();
 
-
-
-
-
     void deleteContact(Long id);
 
     long addContact(ContactDTO bookDTO);

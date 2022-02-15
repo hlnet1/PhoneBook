@@ -6,10 +6,7 @@ import com.example.phonebook.model.entity.Entry;
 import com.example.phonebook.repository.EntryRepository;
 import com.example.phonebook.service.ContactService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.awt.print.Book;
 import java.util.List;
@@ -17,11 +14,11 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/contacts")
-public class ContactsController {
+public class ContactsRestController {
     private final ContactService contactService;
     private final EntryRepository entryRepository;
 
-    public ContactsController(ContactService contactService, EntryRepository entryRepository) {
+    public ContactsRestController(ContactService contactService, EntryRepository entryRepository) {
         this.contactService = contactService;
 
         this.entryRepository = entryRepository;
@@ -42,7 +39,15 @@ public class ContactsController {
                 map(Entry::getContacts).
                 map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ContactDTO> delete(@PathVariable("id") Long id) {
+        contactService.
+                deleteContact(id);
 
+        return ResponseEntity.
+                noContent().
+                build();
+    }
 
     }
 
