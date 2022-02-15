@@ -1,0 +1,48 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: "jdbc:mysql://localhost:3306/phoneBook_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC"
+    username: root
+    password: MySQL123!
+    spring:
+
+#  servlet:
+#    multipart:
+#      max-file-size: 1MB
+#      max-request-size: 5MB
+#  mvc:
+#    hiddenmethod:
+#      filter:
+#        enabled: true
+    sql:
+      init:
+        mode: always
+  jpa:
+    # Choose either MySQL 8 or MySQL 5 below
+    # For MySQL 8
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    #For MySQL 5
+    #    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+    defer-datasource-initialization: false
+  #Cloudinary Properties
+  #cloudinary:
+  #api-key:
+  #api-secret:
+  #cloud-name:
+#server:
+#  port: 8080
+# alternative for in memory database usage
+#      datasource:
+#        url: "jdbc:h2:mem:testdB
+#        driverClassName: org.h2.Driver
+#
+#        username: sa
+#        password: password
+#          database-platform: org.hibernate.dialect.H2DDialect
+#          spring.h2.console.enabled:true
