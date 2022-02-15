@@ -31,14 +31,14 @@ public class ContactServiceImpl implements ContactService {
         return contactsRepository.findContactByEntry(entry);
     }
 
-//    @Override
-//    public List<ContactDTO> getAllContacts() {
-//        return contactsRepository.
-//                findAll().
-//                stream().
-//                map(this::toDto).
-//                collect(Collectors.toList());
-//    }
+    @Override
+    public List<ContactDTO> getAllContacts() {
+        return contactsRepository.
+                findAll().
+                stream().
+                map(this::toDto).
+                collect(Collectors.toList());
+    }
 
 
 

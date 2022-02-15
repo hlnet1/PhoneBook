@@ -17,7 +17,7 @@ public class Contact extends BaseEntity {
     private String phoneNumber;
     @Enumerated(EnumType.STRING)
     private TypeEnum type;
-    @JsonIgnore
+  @JsonIgnore
     @ManyToOne
     @JoinColumn(name="entry_id",nullable = false)
 

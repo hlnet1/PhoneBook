@@ -45,11 +45,7 @@ public class EntryRestController {
         return entryOpt.map(ResponseEntity::ok).orElseGet(()->ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/{entryId}/contacts")
 
-    public List<Contact> findContacts(@PathVariable Long authorId) {
-        Entry entry=entryRepository.findById(authorId).get();
-        return contactRepository.findContactByEntry(entry);}
 
    @PostMapping
    public ResponseEntity<Entry> create(@RequestBody Entry entry,
@@ -62,7 +58,7 @@ public class EntryRestController {
    }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Entry> deleteById(@PathVariable Long id){
+    public ResponseEntity<Entry> delete(@PathVariable Long id){
 
         entryRepository.deleteById(id);
         return ResponseEntity.noContent().build();
